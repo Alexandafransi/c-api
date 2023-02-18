@@ -1,5 +1,7 @@
 using System.Drawing.Printing;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using WebApplicationApi.Dto;
 using WebApplicationApi.Interfaces;
 using WebApplicationApi.Models;
 
@@ -12,17 +14,23 @@ namespace WebApplicationApi.Controllers
     {
 
         private readonly IPokemonRepository _pokemonRepository;
+        
+        // AutoMapper help to list data without specifng specific data like pokemon.name, pokemon.id
+        private readonly IMapper _mapper;
 
-        public PokemonController(IPokemonRepository pokemonRepository)
+        public PokemonController(IPokemonRepository pokemonRepository,IMapper mapper)
         {
             _pokemonRepository = pokemonRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Pokemon>))]
         public IActionResult GetPokemons()
         {
-            var pokemons = _pokemonRepository.GetPokemons();
+            // var pokemons = _pokemonRepository.GetPokemons();
+            var pokemons = _mapper.Map<List<PokemonDto>>(_pokemonRepository.GetPokemons());
+
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
@@ -40,7 +48,7 @@ namespace WebApplicationApi.Controllers
                 return NotFound();
             }
 
-            var pokemon = _pokemonRepository.GetPokemon(pokeId);
+            var pokemon = _mapper.Map<PokemonDto>(_pokemonRepository.GetPokemon(pokeId));
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             return Ok(pokemon);

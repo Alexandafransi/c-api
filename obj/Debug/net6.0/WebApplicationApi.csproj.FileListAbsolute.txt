@@ -91,3 +91,5 @@
 /home/procoder/RiderProjects/WebApplicationApi/WebApplicationApi/bin/Debug/net6.0/Newtonsoft.Json.Bson.dll
 /home/procoder/RiderProjects/WebApplicationApi/WebApplicationApi/obj/Debug/net6.0/WebApplicationApi.RazorAssemblyInfo.cache
 /home/procoder/RiderProjects/WebApplicationApi/WebApplicationApi/obj/Debug/net6.0/WebApplicationApi.RazorAssemblyInfo.cs
+/home/procoder/RiderProjects/WebApplicationApi/WebApplicationApi/bin/Debug/net6.0/AutoMapper.dll
+/home/procoder/RiderProjects/WebApplicationApi/WebApplicationApi/bin/Debug/net6.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
